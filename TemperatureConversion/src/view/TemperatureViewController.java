@@ -49,7 +49,7 @@ public class TemperatureViewController
   }
 
   public void showTime(LocalTime time) {
-    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
+    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss.SSS");
     Platform.runLater(() -> labelTimer.setText(formatter.format(time)));
   }
 
