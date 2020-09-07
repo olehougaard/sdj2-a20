@@ -21,15 +21,12 @@ public class TemperatureViewController
 
   private TemperatureModel model;
   private Region root;
-  private ViewHandler viewHandler;
-
   public TemperatureViewController()
   {
   }
 
-  public void init(ViewHandler viewHandler, TemperatureModel model, Region root)
+  public void init(TemperatureModel model, Region root)
   {
-    this.viewHandler = viewHandler;
     this.model = model;
     this.root = root;
     RunnableClock clock = new RunnableClock(this);

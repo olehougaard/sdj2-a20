@@ -3,9 +3,6 @@ package pi;
 import java.math.BigDecimal;
 
 public class ComputePi implements Runnable {
-
-    private static final long serialVersionUID = 227L;
-
     /** constants used in pi computation */
     private static final BigDecimal FOUR =
             BigDecimal.valueOf(4);

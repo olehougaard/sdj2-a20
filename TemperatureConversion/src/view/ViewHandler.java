@@ -59,7 +59,7 @@ public class ViewHandler extends Application
         loader.setLocation(getClass().getResource(fxmlFile));
         Region root = loader.load();
         temperatureViewController = loader.getController();
-        temperatureViewController.init(this, model, root);
+        temperatureViewController.init(model, root);
       }
       catch (Exception e)
       {
