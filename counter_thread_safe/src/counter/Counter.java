@@ -3,11 +3,11 @@ package counter;
 public class Counter {
     private long value = 0;
 
-    public void inc() {
-        value++;
+    public synchronized void inc() {
+		this.value++;
     }
 
-    public long getValue() {
+    public synchronized long getValue() {
         return value;
     }
 }

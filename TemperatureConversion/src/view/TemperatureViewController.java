@@ -25,7 +25,7 @@ public class TemperatureViewController
   {
   }
 
-  public void init(TemperatureModel model, Region root)
+  public void init(ViewHandler viewHandler, TemperatureModel model, Region root)
   {
     this.model = model;
     this.root = root;

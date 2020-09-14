@@ -11,6 +11,10 @@ public class CounterUpdater implements Runnable {
 
     @Override
     public void run() {
-        for(int i = 0; i < updates; i++) counter.inc();
+        for(int i = 0; i < updates; i++) {
+        	synchronized(counter) {
+        		counter.inc();
+        	}
+        }
     }
 }
