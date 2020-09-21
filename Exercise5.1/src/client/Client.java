@@ -9,7 +9,7 @@ import java.net.Socket;
 
 public class Client {
 	public static void main(String[] args) throws Exception {
-		try (Socket socket = new Socket("localhost", 5678)) {
+		try (Socket socket = new Socket("10.0.0.5", 5678)) {
 			OutputStream outputStream = socket.getOutputStream();
 			PrintWriter printWriter = new PrintWriter(outputStream);
 			InputStream inputStream = socket.getInputStream();
