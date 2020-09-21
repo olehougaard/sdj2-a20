@@ -10,6 +10,12 @@ public class DedicatedServer implements Runnable {
 		this.socket = socket;
 	}
 	
+	private String reverse(String original) {
+		StringBuilder sb = new StringBuilder(original);
+		sb.reverse();
+		return sb.toString();
+	}
+	
 	public void run() {
 		try {
 			InputStream inputStream = socket.getInputStream();
