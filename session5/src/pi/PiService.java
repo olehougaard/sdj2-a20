@@ -2,6 +2,8 @@ package pi;
 
 import java.math.BigDecimal;
 
+import threads.ThreadRunner;
+
 public class PiService {
     private final PiCache cache;
 
