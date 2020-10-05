@@ -1,4 +1,4 @@
-package server;
+package binserver;
 
 import java.io.Serializable;
 

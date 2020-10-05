@@ -1,23 +1,23 @@
-package client;
+package binclient;
 
-import java.io.InputStream;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.io.OutputStream;
-import java.math.BigDecimal;
+import java.io.*;
 import java.net.Socket;
 
-public class PiClient {
+import binserver.Request;
+import binserver.Response;
+
+public class Client {
 	public static void main(String[] args) throws Exception {
-		try(Socket socket = new Socket("localhost", 8888)) {
+		try (Socket socket = new Socket("localhost", 9999)) {
 			OutputStream outputStream = socket.getOutputStream();
 			ObjectOutputStream printWriter = new ObjectOutputStream(outputStream);
-			printWriter.writeInt(28);
+			Request request = new Request("Hallo", true);
+			printWriter.writeObject(request);
 			printWriter.flush();
 			InputStream inputStream = socket.getInputStream();
 			ObjectInputStream reader = new ObjectInputStream(inputStream);
-			BigDecimal pi = (BigDecimal) reader.readObject();
-			System.out.println(pi);
+			Response response = (Response) reader.readObject();
+			System.out.println(response);
 		}
 	}
 }

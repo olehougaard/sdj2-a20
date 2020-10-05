@@ -1,8 +1,7 @@
-package server;
+package binserver;
 
 import java.io.*;
 import java.net.Socket;
-import com.google.gson.Gson;
 
 public class DedicatedServer implements Runnable {
 	private Socket socket;
@@ -20,26 +19,22 @@ public class DedicatedServer implements Runnable {
 	public void run() {
 		try {
 			InputStream inputStream = socket.getInputStream();
-			BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
+			ObjectInputStream reader = new ObjectInputStream(inputStream);
 			OutputStream outputStream = socket.getOutputStream();
-			PrintWriter writer = new PrintWriter(outputStream);
-			Gson gson = new Gson();
-			String message = reader.readLine();
-			Request request = gson.fromJson(message, Request.class);
+			ObjectOutputStream writer = new ObjectOutputStream(outputStream);
+			Request request = (Request) reader.readObject();
 			String original = request.getOriginal();
 			if (request.isReverse()) {
 				String reversed = reverse(original);
 				Response response = new Response(original, reversed);
-				String json = gson.toJson(response);
-				writer.println(json);
+				writer.writeObject(response);
 				writer.flush();
 			} else {
 				Response response = new Response(original, original);
-				String json = gson.toJson(response);
-				writer.println(json);
+				writer.writeObject(response);
 				writer.flush();
 			}
-		} catch (IOException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
