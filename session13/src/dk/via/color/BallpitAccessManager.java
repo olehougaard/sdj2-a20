@@ -3,15 +3,15 @@ package dk.via.color;
 public class BallpitAccessManager {
 	private BallPit pit;
 	
-	public BallpitAccessManager(BallPit pit) {
-		this.pit = pit;
+	public BallpitAccessManager(int count) {
+		this.pit = new BallPit(count);
 	}
 
-	public void read(BallPitReader reader) {
-		reader.read(pit);
+	public Integer read(RedBallPrinter reader) {
+		return reader.read(pit);
 	}
 	
-	public void write(BallpitWriter writer) {
+	public void write(RedBallPainter writer) {
 		writer.write(pit);
 	}
 }

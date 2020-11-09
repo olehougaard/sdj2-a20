@@ -1,7 +1,7 @@
 package dk.via.color;
 
-public interface BallPitReader {
+public interface BallPitReader<T> {
 
-	void read(BallPit pit);
+	T read(BallPit pit);
 
 }

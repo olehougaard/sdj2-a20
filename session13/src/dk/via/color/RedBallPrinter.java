@@ -1,8 +1,9 @@
 package dk.via.color;
 
-public class RedBallPrinter implements BallPitReader {
+public class RedBallPrinter implements BallPitReader<Integer> {
 	@Override
-	public void read(BallPit pit) {
+	public Integer read(BallPit pit) {
 		System.out.println(pit.getRedBalls() + " red balls out of " + pit.getTotal());
+		return pit.getRedBalls();
 	}
 }
